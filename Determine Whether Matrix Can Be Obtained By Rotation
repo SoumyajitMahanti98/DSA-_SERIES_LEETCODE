@@ -1,0 +1,42 @@
+class Solution {
+    public boolean findRotation(int[][] mat, int[][] target) {
+        // Check if dimensions match
+        if (mat.length != target.length || mat[0].length != target[0].length) {
+            return false;
+        }
+        
+        // Check all possible rotations
+        for (int i = 0; i < 4; i++) {
+            if (areEqual(mat, target)) {
+                return true; // Found a match
+            }
+            mat = rotate(mat); // Rotate the matrix for the next check
+        }
+        
+        return false; // No match found in any rotation
+    }
+    
+    private boolean areEqual(int[][] mat, int[][] target) {
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                if (mat[i][j] != target[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    private int[][] rotate(int[][] mat) {
+        int n = mat.length;
+        int[][] rotated = new int[n][n];
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                rotated[j][n - 1 - i] = mat[i][j];
+            }
+        }
+        
+        return rotated;
+    }
+}
