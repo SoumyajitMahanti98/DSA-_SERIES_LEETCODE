@@ -1,0 +1,19 @@
+class Solution {
+    public int numberOfSteps(int num) {
+        int steps = 0;
+
+        while (num > 0) {
+            if (num % 2 == 0) {
+                // Number is even, divide by 2
+                num /= 2;
+            } else {
+                // Number is odd, subtract 1
+                num -= 1;
+            }
+            // Increment the step count
+            steps++;
+        }
+        
+        return steps;
+    }
+    }
