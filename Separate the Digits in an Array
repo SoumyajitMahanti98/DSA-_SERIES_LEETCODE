@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        // Create a list to collect the separated digits
+        List<Integer> digitList = new ArrayList<>();
+        
+        // Process each number in the input array
+        for (int num : nums) {
+            // Convert the current number to a string
+            String numStr = Integer.toString(num);
+            
+            // Add each digit to the list
+            for (char ch : numStr.toCharArray()) {
+                digitList.add(ch - '0'); // Convert character to integer
+            }
+        }
+        
+        // Convert List<Integer> to int[]
+        int[] result = new int[digitList.size()];
+        for (int i = 0; i < digitList.size(); i++) {
+            result[i] = digitList.get(i);
+        }
+        
+        return result;
+    }
+}
+
