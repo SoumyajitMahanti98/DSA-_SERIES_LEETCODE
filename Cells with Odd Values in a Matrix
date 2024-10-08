@@ -1,0 +1,33 @@
+class Solution {
+    public int oddCells(int m, int n, int[][] indices) {
+        int[][] ans = new int[m][n]; // Create a 2D array to keep track of cell values
+        
+        // Process each index
+        for (int i = 0; i < indices.length; i++) {
+            int row = indices[i][0]; // Get the row index
+            int col = indices[i][1]; // Get the column index
+            
+            // Increment the entire row
+            for (int j = 0; j < n; j++) {
+                ans[row][j]++;
+            }
+            
+            // Increment the entire column
+            for (int j = 0; j < m; j++) {
+                ans[j][col]++;
+            }
+        }
+        
+        int count = 0; // Count of odd cells
+        // Count the number of odd cells
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (ans[i][j] % 2 != 0) {
+                    count++;
+                }
+            }
+        }
+        
+        return count; // Return the count of odd cells
+    }
+}
