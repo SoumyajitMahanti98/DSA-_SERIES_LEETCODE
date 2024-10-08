@@ -1,0 +1,26 @@
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+        int[] arr = new int[101]; // Array for years 1950 to 2050
+        for (int i = 0; i < logs.length; i++) {
+            int birthYear = logs[i][0];
+            int deathYear = logs[i][1];
+
+            // Increment the population for each year from birthYear to deathYear (exclusive)
+            for (int j = birthYear; j < deathYear; j++) {
+                if (j >= 1950 && j < 2051) { // Check if year is within range
+                    arr[j - 1950]++;
+                }
+            }
+        }
+
+        int maxYear = 1950; 
+        int maxValue = 0;
+        for (int i = 0; i < 101; i++) {
+            if (arr[i] > maxValue) {
+                maxValue = arr[i];
+                maxYear = i + 1950; // Convert back to actual year
+            }
+        }
+        return maxYear;
+    }
+}
